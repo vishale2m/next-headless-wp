@@ -1,0 +1,20 @@
+.btn{
+    --btnColor: #{$dark-color};
+    display: inline-block;
+    background-color: var(--btnColor);
+    color: $light-color;
+    padding: rem(10) rem(30);
+    font-weight: 600;
+    text-transform: uppercase;
+    border: rem(2) solid var(--btnColor);
+    display: inline-block;
+
+    &:hover{
+        background-color: transparent;
+        color: var(--btnColor);
+    }
+
+    @include maxmedia(991px){
+        padding: rem(8) rem(20);
+    }
+}

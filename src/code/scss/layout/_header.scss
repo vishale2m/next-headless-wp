@@ -1,0 +1,177 @@
+.site-header {
+  padding: $spacer 0;
+  box-shadow: rem(0) rem(10) rem(30) rgba($dark-color, 0.1);
+
+  .header-row {
+    @include flex(row, space-between, center);
+  }
+
+  .site-logo {
+    max-width: rem(150);
+    width: 100%;
+    transition: $transition-base;
+
+    @include maxmedia(991px){
+      @include position(relative);
+      z-index: 2;
+
+      &.logo-active{
+        filter: invert(1);
+      }
+    }
+  }
+
+  .navbar {
+    @include minmedia(xl) {
+      gap: rem(30);
+    }
+
+    @include minmedia(lg) {
+      @include flex(row, center, center, nowrap, rem(40));
+    }
+
+    @include maxmedia(991px){
+      @include position(fixed, 0, -100%, 0, auto);
+      background-color: $dark-color;
+      padding: rem(100) rem(30) rem(0);
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      transition: $transition-base;
+
+      &.active {
+        right: 0;
+      }
+    }
+
+    .navbar-nav {
+      padding: 0;
+      margin: 0;
+
+      @include minmedia(xl) {
+        gap: rem(30);
+      }
+
+      @include minmedia(lg) {
+        @include flex(row, center, center, nowrap, rem(40));
+      }
+    }
+
+    .navbar-nav-item {
+      margin-bottom: 0;
+
+      @include maxmedia(991px){
+        margin-bottom: rem(30);
+      }
+    }
+
+    .navbar-nav-link {
+      color: $dark-color;
+      font-weight: 600;
+      text-transform: uppercase;
+      @include linkUnderline($dark-color, rem(2));
+
+      @include maxmedia(991px){
+        color: $light-color;
+
+        &::after{
+          background-color: $light-color;
+        }
+      }
+    }
+
+    .btn{
+      @include maxmedia(991px){
+        --btnColor: #{$light-color};
+        color: $dark-color;
+
+        &:hover{
+          color: $light-color;
+        }
+      }
+    }
+  }
+
+  .toggle-menu {
+    @include minmedia(lg){
+      display: none;
+    }
+
+    @include maxmedia(991px) {
+      width: rem(25);
+      cursor: pointer;
+      @include position(relative);
+      z-index: 1;
+
+      span {
+        display: block;
+        width: 100%;
+        height: rem(2);
+        background-color: $dark-color;
+        transition: $transition-base;
+        @include position(relative);
+
+        &:nth-child(1) {
+          margin-left: auto;
+        }
+
+        &:nth-child(2) {
+          margin: rem(5) 0;
+
+          &::after,
+          &::before {
+            content: "";
+            @include position(absolute);
+            width: 100%;
+            height: rem(2);
+            background-color: transparent;
+            transition: $transition-base;
+          }
+        }
+
+        &:nth-child(3) {
+          margin-right: auto;
+        }
+      }
+
+      &:hover {
+        &:not(.toggle-active) {
+          span {
+
+            &:nth-child(1),
+            &:nth-child(3) {
+              width: 50%;
+            }
+          }
+        }
+      }
+
+      &.toggle-active {
+        span {
+          background-color: transparent;
+
+          &:nth-child(1) {
+            top: rem(7);
+          }
+
+          &:nth-child(3) {
+            top: -rem(7);
+          }
+
+          &::before,
+          &::after {
+            background-color: $light-color;
+          }
+
+          &::after {
+            transform: rotate(45deg);
+          }
+
+          &::before {
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+  }
+}

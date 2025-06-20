@@ -1,0 +1,47 @@
+@use "sass:math";
+// Convert px to rem
+@function rem($pixels, $context: 16) {
+  @return math.div($pixels, $context) * 1rem;
+}
+
+// Convert px to em
+@function em($pixels, $context: 16) {
+  @return math.div($pixels, $context) * 1em;
+}
+
+// Get color with opacity
+@function rgba-color($color, $opacity) {
+  @return rgba($color, $opacity);
+}
+
+// Get z-index value
+@function z($name) {
+  @if map-has-key($z-indexes, $name) {
+    @return map-get($z-indexes, $name);
+  }
+  @warn "No z-index found for `#{$name}` in $z-indexes map.";
+  @return null;
+}
+
+// Get spacing value
+@function spacing($key) {
+  @if map-has-key($spacers, $key) {
+    @return map-get($spacers, $key);
+  }
+  @warn "No spacing found for `#{$key}` in $spacers map.";
+  @return null;
+}
+
+// Calculate grid column width
+@function grid-column-width($columns) {
+  @return percentage($columns / $grid-columns);
+}
+
+// Get breakpoint value
+@function breakpoint($name) {
+  @if map-has-key($breakpoints, $name) {
+    @return map-get($breakpoints, $name);
+  }
+  @warn "No breakpoint found for `#{$name}` in $breakpoints map.";
+  @return null;
+} 

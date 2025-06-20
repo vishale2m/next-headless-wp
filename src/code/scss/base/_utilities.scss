@@ -1,0 +1,31 @@
+.container {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $spacer;
+    padding-left: $spacer;
+
+    @include minmedia(sm) {
+        max-width: 540px;
+    }
+
+    @include minmedia(md) {
+        max-width: 720px;
+    }
+
+    @include minmedia(lg) {
+        max-width: 960px;
+    }
+
+    @include minmedia(xl) {
+        max-width: 1140px;
+    }
+
+    @include minmedia(xxl) {
+        max-width: 1240px;
+    }
+
+    @include minmedia(2xl) {
+        max-width: 1560px;
+    }
+}
